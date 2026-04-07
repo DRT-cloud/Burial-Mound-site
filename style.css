@@ -1899,3 +1899,92 @@ a.contact-detail__value:hover {
     height: 250px;
   }
 }
+
+/* ============================================
+   EMAIL SIGNUP SECTION
+   ============================================ */
+.email-signup {
+  padding: 80px 0;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(194, 159, 90, 0.15);
+  border-bottom: 1px solid rgba(194, 159, 90, 0.15);
+  text-align: center;
+}
+.email-signup__title {
+  font-family: 'Black Ops One', cursive;
+  font-size: 36px;
+  color: #c29f5a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.email-signup__text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+.email-signup__form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.email-signup__input-group {
+  display: flex;
+  gap: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.email-signup__input {
+  flex: 1;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(194, 159, 90, 0.3);
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.email-signup__input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.email-signup__input:focus {
+  border-color: #c29f5a;
+  background: rgba(255, 255, 255, 0.12);
+}
+.email-signup__btn {
+  border-radius: 0 4px 4px 0;
+  padding: 16px 28px;
+  white-space: nowrap;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+}
+.email-signup__disclaimer {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 16px;
+}
+
+@media (max-width: 480px) {
+  .email-signup__input-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .email-signup__input {
+    border-right: 1px solid rgba(194, 159, 90, 0.3);
+    border-radius: 4px;
+  }
+  .email-signup__btn {
+    border-radius: 4px;
+    width: 100%;
+  }
+  .email-signup__title {
+    font-size: 28px;
+  }
+}
