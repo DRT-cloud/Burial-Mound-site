@@ -2494,3 +2494,69 @@ a.contact-detail__value:hover {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ============================================
+   RESULTS LIST
+   ============================================ */
+.results-grid {
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.results-year {
+  font-family: 'Black Ops One', cursive;
+  font-size: 24px;
+  color: #c29f5a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 40px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(194, 159, 90, 0.2);
+}
+.results-list {
+  display: flex;
+  flex-direction: column;
+}
+.results-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s, padding-left 0.2s;
+}
+.results-item:hover {
+  background: rgba(194, 159, 90, 0.08);
+  padding-left: 24px;
+}
+.results-item__date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  min-width: 64px;
+  text-transform: uppercase;
+}
+.results-item__name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  flex: 1;
+}
+.results-item__arrow {
+  color: #c29f5a;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.results-item:hover .results-item__arrow {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .results-item { gap: 10px; padding: 12px 8px; }
+  .results-item__date { min-width: 50px; font-size: 11px; }
+  .results-item__name { font-size: 13px; }
+}
