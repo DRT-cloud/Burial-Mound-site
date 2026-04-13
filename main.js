@@ -150,3 +150,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+// ============================================
+// RUN N GUN SUB-TABS
+// ============================================
+document.querySelectorAll('.subnav__tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    // Deactivate all tabs + content
+    document.querySelectorAll('.subnav__tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    // Activate clicked tab + content
+    tab.classList.add('active');
+    const el = document.getElementById('tab-' + target);
+    if (el) {
+      el.classList.add('active');
+      // Re-trigger scroll reveals for newly visible content
+      el.querySelectorAll('.reveal').forEach(r => {
+        observeReveal(r);
+      });
+    }
+  });
+});
+
+// Helper to re-observe reveals
+function observeReveal(el) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  obs.observe(el);
+}
