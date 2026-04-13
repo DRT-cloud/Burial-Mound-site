@@ -2560,3 +2560,301 @@ a.contact-detail__value:hover {
   .results-item__date { min-width: 50px; font-size: 11px; }
   .results-item__name { font-size: 13px; }
 }
+
+/* ============================================
+   RULEBOOK — Restyled for Burial Mound theme
+   ============================================ */
+.rulebook-wrapper {
+  background: #000;
+}
+
+/* Banner */
+.rulebook-wrapper .banner {
+  padding: 40px 32px;
+  text-align: center;
+  border-bottom: 1px solid rgba(194, 159, 90, 0.2);
+}
+.rulebook-wrapper .banner-event {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 8px;
+}
+.rulebook-wrapper .banner-title {
+  font-family: 'Black Ops One', cursive;
+  font-size: 36px;
+  color: #c29f5a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.rulebook-wrapper .banner-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+}
+.rulebook-wrapper .print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: rgba(194, 159, 90, 0.1);
+  border: 1px solid rgba(194, 159, 90, 0.3);
+  border-radius: 4px;
+  color: #c29f5a;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.rulebook-wrapper .print-btn:hover { background: rgba(194, 159, 90, 0.2); }
+.rulebook-wrapper .print-btn svg { width: 16px; height: 16px; }
+
+/* Layout */
+.rulebook-wrapper .layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sidebar TOC */
+.rulebook-wrapper .sidebar {
+  position: sticky;
+  top: 120px;
+  padding: 32px 24px;
+  border-right: 1px solid rgba(194, 159, 90, 0.1);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+.rulebook-wrapper .toc-label {
+  font-family: 'Black Ops One', cursive;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c29f5a;
+  margin-bottom: 16px;
+}
+.rulebook-wrapper .toc-list {
+  list-style: none;
+  padding: 0;
+}
+.rulebook-wrapper .toc-list li { margin-bottom: 2px; }
+.rulebook-wrapper .toc-list a {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s, background 0.2s;
+}
+.rulebook-wrapper .toc-list a:hover {
+  color: #fff;
+  background: rgba(194, 159, 90, 0.08);
+}
+.rulebook-wrapper .toc-num {
+  font-family: 'Black Ops One', cursive;
+  font-size: 12px;
+  color: #c29f5a;
+  min-width: 20px;
+}
+
+/* Content area */
+.rulebook-wrapper .content {
+  padding: 40px 48px;
+}
+
+/* Rule sections */
+.rulebook-wrapper .rule-section {
+  margin-bottom: 48px;
+}
+.rulebook-wrapper .section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(194, 159, 90, 0.2);
+}
+.rulebook-wrapper .section-num {
+  font-family: 'Black Ops One', cursive;
+  font-size: 28px;
+  color: #c29f5a;
+}
+.rulebook-wrapper .section-title {
+  font-family: 'Black Ops One', cursive;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+/* Sub-sections */
+.rulebook-wrapper .sub { margin: 20px 0 20px 0; }
+.rulebook-wrapper .sub-num {
+  font-family: 'Black Ops One', cursive;
+  font-size: 15px;
+  color: #c29f5a;
+  margin-right: 8px;
+}
+.rulebook-wrapper .sub-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+.rulebook-wrapper .rule-body {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin-top: 8px;
+}
+
+/* Rule lists */
+.rulebook-wrapper .rule-list,
+.rulebook-wrapper .rule-sublist {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+}
+.rulebook-wrapper .rule-list > li {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.rulebook-wrapper .rule-sublist > li {
+  display: flex;
+  gap: 10px;
+  padding: 6px 0 6px 24px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+.rulebook-wrapper .num {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #c29f5a;
+  min-width: 48px;
+  flex-shrink: 0;
+}
+
+/* Plain list */
+.rulebook-wrapper .plain-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+}
+.rulebook-wrapper .plain-list li {
+  padding: 4px 0 4px 16px;
+  position: relative;
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+}
+.rulebook-wrapper .plain-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #c29f5a;
+}
+
+/* Callouts */
+.rulebook-wrapper .callout {
+  background: rgba(194, 159, 90, 0.06);
+  border-left: 3px solid #c29f5a;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+}
+.rulebook-wrapper .callout.warn {
+  background: rgba(139, 0, 0, 0.08);
+  border-left-color: #8B0000;
+}
+
+/* Penalty table */
+.rulebook-wrapper .penalty-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+.rulebook-wrapper .penalty-table th,
+.rulebook-wrapper .penalty-table td {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.rulebook-wrapper .penalty-table th {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c29f5a;
+  border-bottom: 1px solid rgba(194, 159, 90, 0.2);
+}
+.rulebook-wrapper .penalty-table td { color: rgba(255,255,255,0.7); }
+.rulebook-wrapper .penalty-time { color: #c29f5a; font-weight: 600; }
+.rulebook-wrapper .penalty-dq { color: #cc4444; font-weight: 700; }
+
+/* Badges */
+.rulebook-wrapper .badge { display: none; }
+.rulebook-wrapper .badge-new {
+  display: inline-block;
+  background: #c29f5a;
+  color: #000;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Highlight text */
+.rulebook-wrapper .hl {
+  color: #c29f5a;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .rulebook-wrapper .layout {
+    grid-template-columns: 1fr;
+  }
+  .rulebook-wrapper .sidebar {
+    position: relative;
+    top: auto;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(194, 159, 90, 0.1);
+    padding: 24px;
+  }
+  .rulebook-wrapper .content {
+    padding: 24px;
+  }
+  .rulebook-wrapper .section-num { font-size: 22px; }
+  .rulebook-wrapper .section-title { font-size: 18px; }
+}
+@media (max-width: 480px) {
+  .rulebook-wrapper .content { padding: 16px; }
+  .rulebook-wrapper .banner { padding: 24px 16px; }
+  .rulebook-wrapper .banner-title { font-size: 28px; }
+}
