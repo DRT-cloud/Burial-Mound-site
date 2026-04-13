@@ -412,7 +412,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
 }
 
@@ -1987,4 +1987,194 @@ a.contact-detail__value:hover {
   .email-signup__title {
     font-size: 28px;
   }
+}
+
+/* ============================================
+   NEARBY PAGE
+   ============================================ */
+.nearby-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.nearby-card {
+  background: #0a0a0a;
+  border: 1px solid rgba(194, 159, 90, 0.15);
+  border-radius: 8px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.nearby-card:hover {
+  border-color: rgba(194, 159, 90, 0.4);
+  transform: translateY(-4px);
+}
+.nearby-card__icon {
+  color: #c29f5a;
+  margin-bottom: 20px;
+}
+.nearby-card__icon svg {
+  width: 48px;
+  height: 48px;
+}
+.nearby-card__title {
+  font-family: 'Black Ops One', cursive;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.nearby-card__text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.nearby-tips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+.nearby-tip {
+  text-align: center;
+  padding: 24px;
+}
+.nearby-tip h4 {
+  font-family: 'Black Ops One', cursive;
+  font-size: 16px;
+  color: #c29f5a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.nearby-tip p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .nearby-cards { grid-template-columns: 1fr; }
+  .nearby-tips { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   DIRECTIONS PAGE — GATE BLOCKS
+   ============================================ */
+.gate-section { padding: 60px 0; }
+.gate-block__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.gate-block__number {
+  font-family: 'Black Ops One', cursive;
+  font-size: 48px;
+  color: #c29f5a;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.gate-block__title {
+  font-family: 'Black Ops One', cursive;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.gate-block__desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.gate-block__content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+}
+.gate-block__map {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.gate-block__map iframe {
+  display: block;
+  min-height: 300px;
+}
+.gate-block__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .gate-block__content { grid-template-columns: 1fr; }
+  .gate-block__links { flex-direction: row; flex-wrap: wrap; }
+  .gate-block__number { font-size: 36px; }
+  .gate-block__title { font-size: 18px; }
+}
+
+/* ============================================
+   MEDIA PAGE
+   ============================================ */
+.media-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 40px;
+}
+.media-gallery__grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.media-gallery__grid img:hover {
+  transform: scale(1.03);
+  opacity: 0.85;
+}
+.media-videos__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.media-video {
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111;
+}
+.media-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 1024px) {
+  .media-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .media-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+  .media-videos__grid { grid-template-columns: 1fr; }
+  .media-gallery__grid img { height: 150px; }
+}
+
+/* ============================================
+   NAV — Handle more links gracefully
+   ============================================ */
+.nav__links {
+  gap: 20px;
+}
+.nav__links a {
+  font-size: 13px;
+}
+
+@media (max-width: 1200px) {
+  .nav__links { gap: 12px; }
+  .nav__links a { font-size: 12px; }
 }
