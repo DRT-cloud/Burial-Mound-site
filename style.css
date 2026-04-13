@@ -2484,3 +2484,13 @@ a.contact-detail__value:hover {
   .sponsor-grid { grid-template-columns: repeat(2, 1fr); }
   .subnav__tab { padding: 14px 16px; font-size: 12px; }
 }
+
+/* 2-column card grid for 4 events */
+.cards-grid--2col {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+@media (max-width: 768px) {
+  .cards-grid--2col {
+    grid-template-columns: 1fr !important;
+  }
+}

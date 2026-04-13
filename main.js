@@ -97,11 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* -----------------------------------------------------------
-     COUNTDOWN TIMER (targeting Jan 17, 2026)
+     COUNTDOWN TIMER (targeting May 15, 2026)
      ----------------------------------------------------------- */
   const countdownEl = document.querySelector('.countdown');
   if (countdownEl) {
-    const targetDate = new Date('2026-01-17T08:00:00-06:00'); // CST
+    const targetDate = new Date('2026-05-15T20:00:00-05:00'); // CDT — Twilight Biathlon starts at night
 
     const updateCountdown = () => {
       const now = new Date();
