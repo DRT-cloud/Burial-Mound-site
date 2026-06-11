@@ -2420,6 +2420,73 @@ a.contact-detail__value:hover {
 .results-links { margin-top: 40px; }
 
 /* ============================================
+   RESULTS ARCHIVE (events page)
+   ============================================ */
+.results-eyebrow {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #e63621;
+  margin-bottom: 14px;
+}
+.results-list {
+  margin-top: 40px;
+  border-top: 1px solid rgba(194, 159, 90, 0.18);
+}
+.result-row {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 8px;
+  border-bottom: 1px solid rgba(194, 159, 90, 0.18);
+  text-decoration: none;
+  transition: background-color 0.25s, padding-left 0.25s;
+}
+.result-row:hover {
+  background: rgba(230, 54, 33, 0.06);
+  padding-left: 16px;
+}
+.result-row__date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.result-row__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.92);
+}
+.result-row__platform {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+}
+.result-row__arrow {
+  color: #e63621;
+  font-weight: 700;
+  transition: transform 0.25s;
+  display: inline-block;
+}
+.result-row:hover .result-row__arrow { transform: translateX(4px); }
+.result-row:hover .result-row__title { color: #fff; }
+@media (max-width: 640px) {
+  .result-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 16px 8px;
+  }
+  .result-row__platform { margin-top: 4px; }
+}
+
+/* ============================================
    PARTNERS / SPONSOR GRID
    ============================================ */
 .sponsor-grid {
@@ -2443,14 +2510,42 @@ a.contact-detail__value:hover {
   transform: translateY(-4px);
 }
 .sponsor-card__logo {
-  width: 120px;
-  height: 80px;
+  width: 100%;
+  height: 92px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
-  border: 1px dashed rgba(194, 159, 90, 0.2);
-  border-radius: 4px;
+  border-radius: 6px;
+  padding: 10px 14px;
+  box-sizing: border-box;
+}
+.sponsor-card__img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+/* Light/solid-background logos sit on a white tile so they read on the dark page */
+.sponsor-card__logo--light {
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+/* Wordmark fallback when no logo image is available */
+.sponsor-card__logo--wordmark {
+  border: 1px dashed rgba(194, 159, 90, 0.25);
+}
+.sponsor-card__wordmark {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #e63621;
+  text-align: center;
+  line-height: 1.25;
 }
 .sponsor-card__placeholder {
   font-family: 'Poppins', sans-serif;
