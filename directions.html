@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Directions — The Burial Mound Event Center</title>
-  <meta name="description" content="Directions and gate locations for The Burial Mound Event Center in Pawnee, Oklahoma. Four entrance gates with GPS coordinates and maps.">
-  <meta property="og:title" content="Directions — The Burial Mound Event Center">
-  <meta property="og:description" content="Find your way to The Burial Mound. Four entrance gates with maps and GPS coordinates.">
-  <meta property="og:image" content="images/road-course.jpg">
+  <title>Location & Directions — The Burial Mound Event Center</title>
+  <meta name="description" content="The Burial Mound Event Center, 42251 S 34500 Rd, Pawnee, OK. GPS for all four entrance gates, parking, and an interactive satellite venue map.">
+  <meta property="og:title" content="Location & Directions — The Burial Mound Event Center">
+  <meta property="og:description" content="42251 S 34500 Rd, Pawnee, Oklahoma. Four entrance gates with GPS coordinates, turn-by-turn directions, and an interactive venue map.">
+  <meta property="og:image" content="images/property-aerial.jpg">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
 
@@ -42,113 +43,144 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero__bg" style="background-image: url('images/road-course.jpg');"></div>
+  <header class="hero hero--sub">
+    <div class="hero__bg" style="background-image: url('images/property-aerial.jpg');"></div>
     <div class="hero__content">
-      <h1 class="hero__title">DIRECTIONS</h1>
-      <p class="hero__subtitle">Gate Locations & GPS Coordinates</p>
+      <p class="loc-eyebrow reveal">// Location &amp; Directions</p>
+      <h1 class="hero__title">PAWNEE, OKLAHOMA</h1>
+      <p class="hero__subtitle">42251 S 34500 Rd &middot; Four Gates &middot; GPS for Every Entrance</p>
     </div>
-  </section>
+  </header>
 
-  <!-- INTRO -->
+  <!-- INTRO + ADDRESS / VENUE -->
   <section class="section">
-    <div class="container container--narrow" style="text-align:center;">
-      <p class="section__intro reveal">The Burial Mound spans two properties with four entrance gates. Use the maps and links below to navigate to the correct gate for your event. Always follow event-specific gate instructions provided at registration.</p>
-      <div class="divider reveal"></div>
-    </div>
-  </section>
-
-  <!-- GATE 1 -->
-  <section class="section gate-section">
     <div class="container">
-      <div class="gate-block reveal">
-        <div class="gate-block__header">
-          <span class="gate-block__number">01</span>
-          <div>
-            <h2 class="gate-block__title">WEST GATE 1 — MAIN GATE</h2>
-            <p class="gate-block__desc">Primary entrance for most events and general access.</p>
-          </div>
+      <p class="loc-lede reveal">All Burial Mound events are held at <strong>The Burial Mound Event Center</strong> &mdash; a private 270-acre range east of Pawnee, Oklahoma, spanning two properties about a mile apart. There are four entrance gates. Pick the one closest to your approach, or follow the event-specific gate instructions sent at registration.</p>
+
+      <div class="loc-info reveal">
+        <div class="loc-info__card">
+          <p class="loc-info__label">Address</p>
+          <p class="loc-info__value">42251 S 34500 Rd<br>Pawnee, OK 74058</p>
+          <p class="loc-info__note">Pawnee County, north-central Oklahoma.</p>
         </div>
-        <div class="gate-block__content">
-          <div class="gate-block__map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d955.4573822327928!2d-96.8541357303471!3d36.40095999827271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDI0JzAzLjUiTiA5NsKwNTEnMTIuNiJX!5e1!3m2!1sen!2sus!4v1776077060555!5m2!1sen!2sus" width="100%" height="350" style="border:0;border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <div class="gate-block__links">
-            <a href="https://maps.app.goo.gl/Usn8ewQWbAGJDSsU6" class="btn-gold" target="_blank" rel="noopener">Open in Google Maps</a>
-            <a href="https://maps.app.goo.gl/W5HDnJGbgZqaTxdm9" class="btn-ghost" target="_blank" rel="noopener">Street View</a>
-          </div>
+        <div class="loc-info__card">
+          <p class="loc-info__label">Venue</p>
+          <p class="loc-info__value"><a href="https://maps.app.goo.gl/Usn8ewQWbAGJDSsU6" target="_blank" rel="noopener noreferrer">The Burial Mound Event Center &rarr;</a></p>
+          <p class="loc-info__note">Parking is available near the starting line. Free primitive camping on-site (no hookups).</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GATE 2 -->
-  <section class="section gate-section" style="background:#0a0a0a;">
+  <!-- ENTRANCES -->
+  <section class="section" style="background: var(--gray-100);">
     <div class="container">
-      <div class="gate-block reveal">
-        <div class="gate-block__header">
-          <span class="gate-block__number">02</span>
-          <div>
-            <h2 class="gate-block__title">WEST GATE 2 — THE BAYS</h2>
-            <p class="gate-block__desc">Access to the bay area and west-side facilities.</p>
+      <p class="loc-eyebrow reveal">// Directions</p>
+      <h2 class="section-title reveal" style="text-align:left;">ENTRANCES</h2>
+      <p class="loc-lede reveal" style="margin-bottom:36px;">Each gate has its own GPS. Tap <strong>Directions</strong> to launch turn-by-turn navigation in your phone's maps app, or copy the coordinates.</p>
+
+      <div class="gate-grid">
+
+        <!-- Gate 1 -->
+        <div class="gate-card reveal">
+          <div class="gate-card__head">
+            <span class="gate-card__label">Gate 1 West</span>
+            <span class="gate-card__name">MAIN GATE</span>
+          </div>
+          <div class="gate-card__coords-row">
+            <span class="gate-card__coords">36&deg;24'03.5"N 96&deg;51'12.6"W</span>
+            <button class="gate-card__copy" type="button" data-coords="36°24'03.5&quot;N 96°51'12.6&quot;W" aria-label="Copy coordinates for Gate 1 West">Copy</button>
+          </div>
+          <p class="gate-card__desc">Primary entrance. Use this if it's your first visit.</p>
+          <div class="gate-card__actions">
+            <a href="https://maps.app.goo.gl/Usn8ewQWbAGJDSsU6" class="btn-gold btn-gold--sm" target="_blank" rel="noopener noreferrer">Directions</a>
+            <a href="https://maps.app.goo.gl/W5HDnJGbgZqaTxdm9" class="btn-ghost btn-ghost--sm" target="_blank" rel="noopener noreferrer">Open in Maps</a>
           </div>
         </div>
-        <div class="gate-block__content">
-          <div class="gate-block__map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d245.84825465221323!2d-96.85479711038711!3d36.405811091764214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1776077150517!5m2!1sen!2sus" width="100%" height="350" style="border:0;border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <!-- Gate 2 -->
+        <div class="gate-card reveal">
+          <div class="gate-card__head">
+            <span class="gate-card__label">Gate 2 West</span>
+            <span class="gate-card__name">THE BAYS</span>
           </div>
-          <div class="gate-block__links">
-            <a href="https://maps.app.goo.gl/CzUq7n9scBnKXJFJ9" class="btn-gold" target="_blank" rel="noopener">Open in Google Maps</a>
-            <a href="https://maps.app.goo.gl/ZxBVWsQNVGZxFe8EA" class="btn-ghost" target="_blank" rel="noopener">Street View</a>
+          <div class="gate-card__coords-row">
+            <span class="gate-card__coords">36&deg;24'21.4"N 96&deg;51'17.9"W</span>
+            <button class="gate-card__copy" type="button" data-coords="36°24'21.4&quot;N 96°51'17.9&quot;W" aria-label="Copy coordinates for Gate 2 West">Copy</button>
+          </div>
+          <p class="gate-card__desc">Direct access to the bays.</p>
+          <div class="gate-card__actions">
+            <a href="https://maps.app.goo.gl/CzUq7n9scBnKXJFJ9" class="btn-gold btn-gold--sm" target="_blank" rel="noopener noreferrer">Directions</a>
+            <a href="https://maps.app.goo.gl/ZxBVWsQNVGZxFe8EA" class="btn-ghost btn-ghost--sm" target="_blank" rel="noopener noreferrer">Open in Maps</a>
           </div>
         </div>
+
+        <!-- Gate 3 -->
+        <div class="gate-card reveal">
+          <div class="gate-card__head">
+            <span class="gate-card__label">Gate 3 East</span>
+            <span class="gate-card__name">CREEK ENTRANCE</span>
+          </div>
+          <div class="gate-card__coords-row">
+            <span class="gate-card__coords">36&deg;23'59.2"N 96&deg;50'07.8"W</span>
+            <button class="gate-card__copy" type="button" data-coords="36°23'59.2&quot;N 96°50'07.8&quot;W" aria-label="Copy coordinates for Gate 3 East">Copy</button>
+          </div>
+          <p class="gate-card__desc">Creek-side approach. Lower-elevation route.</p>
+          <div class="gate-card__actions">
+            <a href="https://maps.app.goo.gl/gP8JHFhsDqEnNzHa9" class="btn-gold btn-gold--sm" target="_blank" rel="noopener noreferrer">Directions</a>
+            <a href="https://maps.app.goo.gl/H7AKFgTtKsq8j4fNA" class="btn-ghost btn-ghost--sm" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+          </div>
+        </div>
+
+        <!-- Gate 4 -->
+        <div class="gate-card reveal">
+          <div class="gate-card__head">
+            <span class="gate-card__label">Gate 4 East</span>
+            <span class="gate-card__name">HILLTOP ENTRANCE</span>
+          </div>
+          <div class="gate-card__coords-row">
+            <span class="gate-card__coords">36&deg;23'43.8"N 96&deg;50'07.4"W</span>
+            <button class="gate-card__copy" type="button" data-coords="36°23'43.8&quot;N 96°50'07.4&quot;W" aria-label="Copy coordinates for Gate 4 East">Copy</button>
+          </div>
+          <p class="gate-card__desc">Higher-elevation eastern approach.</p>
+          <div class="gate-card__actions">
+            <a href="https://maps.app.goo.gl/BQJ4NPmfzZ1gDJaUA" class="btn-gold btn-gold--sm" target="_blank" rel="noopener noreferrer">Directions</a>
+            <a href="https://maps.app.goo.gl/3gTf2DCpwAJwSWHa9" class="btn-ghost btn-ghost--sm" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- GATE 3 -->
-  <section class="section gate-section">
+  <!-- INTERACTIVE VENUE MAP -->
+  <section class="section">
     <div class="container">
-      <div class="gate-block reveal">
-        <div class="gate-block__header">
-          <span class="gate-block__number">03</span>
-          <div>
-            <h2 class="gate-block__title">EAST GATE 3 — CREEK ENTRANCE</h2>
-            <p class="gate-block__desc">East-side access near the creek crossing. Used for select events.</p>
-          </div>
-        </div>
-        <div class="gate-block__content">
-          <div class="gate-block__map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d955.4718531853174!2d-96.83613773034709!3d36.39978299827279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDIzJzU5LjIiTiA5NsKwNTAnMDcuOCJX!5e1!3m2!1sen!2sus!4v1776077298348!5m2!1sen!2sus" width="100%" height="350" style="border:0;border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <div class="gate-block__links">
-            <a href="https://maps.app.goo.gl/gP8JHFhsDqEnNzHa9" class="btn-gold" target="_blank" rel="noopener">Open in Google Maps</a>
-            <a href="https://maps.app.goo.gl/H7AKFgTtKsq8j4fNA" class="btn-ghost" target="_blank" rel="noopener">Street View</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <p class="loc-eyebrow reveal">// Venue Map</p>
+      <h2 class="section-title reveal" style="text-align:left;">KNOW BEFORE YOU GO</h2>
+      <p class="loc-lede reveal" style="margin-bottom:8px;">Satellite view with every gate, parking area, and shooting bay. Toggle categories on and off, switch the basemap, and click any marker or area for details and directions.</p>
 
-  <!-- GATE 4 -->
-  <section class="section gate-section" style="background:#0a0a0a;">
-    <div class="container">
-      <div class="gate-block reveal">
-        <div class="gate-block__header">
-          <span class="gate-block__number">04</span>
-          <div>
-            <h2 class="gate-block__title">EAST GATE 4 — HILLTOP ENTRANCE</h2>
-            <p class="gate-block__desc">East-side hilltop access. Provides entry to the upper terrain areas.</p>
+      <div class="venuemap reveal">
+        <div class="venuemap__bar">
+          <div class="venuemap__filters">
+            <span class="venuemap__filters-label">Filters</span>
+            <button class="vm-chip" type="button" data-cat="gate" aria-pressed="true"><span class="vm-chip__dot" style="background:#C29F5A;"></span>Gates</button>
+            <button class="vm-chip" type="button" data-cat="parking" aria-pressed="true"><span class="vm-chip__dot" style="background:#4a90d9;"></span>Parking</button>
+            <button class="vm-chip" type="button" data-cat="bay" aria-pressed="true"><span class="vm-chip__dot" style="background:#E63621;"></span>Bays</button>
+          </div>
+          <div class="venuemap__base">
+            <button class="vm-base" type="button" data-base="sat" aria-pressed="true">Satellite</button>
+            <button class="vm-base" type="button" data-base="topo" aria-pressed="false">Topo</button>
           </div>
         </div>
-        <div class="gate-block__content">
-          <div class="gate-block__map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d955.5244591385441!2d-96.83602273034708!3d36.395503998272815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDIzJzQzLjgiTiA5NsKwNTAnMDcuNCJX!5e1!3m2!1sen!2sus!4v1776077396230!5m2!1sen!2sus" width="100%" height="350" style="border:0;border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <div class="gate-block__links">
-            <a href="https://maps.app.goo.gl/BQJ4NPmfzZ1gDJaUA" class="btn-gold" target="_blank" rel="noopener">Open in Google Maps</a>
-            <a href="https://maps.app.goo.gl/3gTf2DCpwAJwSWHa9" class="btn-ghost" target="_blank" rel="noopener">Street View</a>
-          </div>
+        <div class="venuemap__body">
+          <div id="venue-leaflet" role="application" aria-label="Interactive venue map"></div>
+          <aside class="venuemap__detail">
+            <p class="venuemap__detail-label">// Detail</p>
+            <div id="venue-detail">
+              <p class="venuemap__detail-empty">Click any gate, parking area, or shooting bay on the map for details and directions.</p>
+            </div>
+          </aside>
         </div>
       </div>
     </div>
@@ -163,7 +195,7 @@
         </div>
         <div class="footer__nav">
           <div class="footer__nav-column"><h4>Navigate</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="facilities.html">Facilities</a><a href="events.html">Events</a></div>
-          <div class="footer__nav-column"><h4>More</h4><a href="training.html">Training</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="https://practiscore.com/clubs/the_burial_mound_shooting_center" target="_blank" rel="noopener">PractiScore</a></div>
+          <div class="footer__nav-column"><h4>More</h4><a href="training.html">Training</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
         </div>
         <div class="footer__contact"><h4>Contact</h4><p><a href="tel:9182859781">918-285-9781</a></p><p><a href="mailto:theburialmound@gmail.com">theburialmound@gmail.com</a></p><p>Pawnee, Oklahoma 74058</p>
           <div class="footer__socials">
@@ -176,6 +208,9 @@
       <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 The Burial Mound Event Center. All rights reserved.</p></div>
     </div>
   </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="main.js"></script>
+  <script src="venue-map.js" defer></script>
 </body>
 </html>

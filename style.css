@@ -2953,3 +2953,219 @@ a.contact-detail__value:hover {
   .rulebook-wrapper .banner { padding: 24px 16px; }
   .rulebook-wrapper .banner-title { font-size: 28px; }
 }
+
+/* ============================================================
+   DIRECTIONS / LOCATION PAGE
+   ============================================================ */
+.loc-eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.loc-lede {
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.7;
+  color: var(--gray-500);
+  max-width: 620px;
+}
+.loc-lede strong { color: #fff; font-weight: 600; }
+
+/* Address / venue info cards */
+.loc-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 8px;
+}
+.loc-info__card {
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  padding: 28px 30px;
+  background: var(--gray-100);
+}
+.loc-info__label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 12px;
+}
+.loc-info__value {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+}
+.loc-info__value a { color: var(--gold); text-decoration: none; }
+.loc-info__value a:hover { color: var(--gold-light); }
+.loc-info__note {
+  font-size: 14px;
+  color: var(--gray-500);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* Gate cards grid */
+.gate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.gate-card {
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  padding: 28px 30px;
+  background: var(--gray-100);
+  display: flex;
+  flex-direction: column;
+}
+.gate-card__head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.gate-card__label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(194, 159, 90, 0.12);
+  border: 1px solid rgba(194, 159, 90, 0.35);
+  padding: 4px 9px;
+  border-radius: 4px;
+}
+.gate-card__name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+.gate-card__coords-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.gate-card__coords {
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--gray-500);
+}
+.gate-card__copy {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: none;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+.gate-card__copy:hover { border-color: var(--gold); color: var(--gold-light); }
+.gate-card__desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--gray-500);
+  margin-bottom: 22px;
+  flex: 1;
+}
+.gate-card__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Interactive venue map */
+.venuemap {
+  margin-top: 28px;
+  border: 1px solid var(--gray-300);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--gray-100);
+}
+.venuemap__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--gray-300);
+  background: #111;
+}
+.venuemap__filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.venuemap__filters-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-right: 4px;
+}
+.vm-chip, .vm-base {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  background: none;
+  border: 1px solid var(--gray-300);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.vm-chip__dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.vm-chip[aria-pressed="true"] { color: #fff; border-color: var(--gold); background: rgba(194,159,90,0.10); }
+.vm-chip[aria-pressed="false"] { opacity: 0.5; }
+.venuemap__base { display: flex; gap: 8px; }
+.vm-base[aria-pressed="true"] { color: #fff; border-color: var(--gold); background: rgba(194,159,90,0.12); }
+.venuemap__body { display: grid; grid-template-columns: 1fr 300px; }
+#venue-leaflet { width: 100%; height: 520px; background: #0d0d0d; }
+.venuemap__detail {
+  padding: 22px 24px;
+  border-left: 1px solid var(--gray-300);
+  background: var(--gray-100);
+}
+.venuemap__detail-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 14px;
+}
+.venuemap__detail-empty { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+.venuemap__detail-name { font-family: var(--font-display); font-size: 18px; color: #fff; margin-bottom: 8px; }
+.venuemap__detail-cat {
+  display: inline-block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+}
+.venuemap__detail-desc { font-size: 14px; color: var(--gray-500); line-height: 1.6; margin-bottom: 16px; }
+
+/* Leaflet popup dark theme */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #1a1a1a; color: #fff; }
+.leaflet-popup-content { font-family: var(--font-body); font-size: 13px; }
+.leaflet-container a.leaflet-popup-close-button { color: var(--gray-500); }
+.leaflet-bar a { background: #1a1a1a; color: #fff; border-color: #3a3a3a; }
+.leaflet-bar a:hover { background: #2a2a2a; }
+
+@media (max-width: 820px) {
+  .loc-info, .gate-grid { grid-template-columns: 1fr; }
+  .venuemap__body { grid-template-columns: 1fr; }
+  .venuemap__detail { border-left: none; border-top: 1px solid var(--gray-300); }
+  #venue-leaflet { height: 380px; }
+}
