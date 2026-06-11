@@ -3169,3 +3169,42 @@ a.contact-detail__value:hover {
   .venuemap__detail { border-left: none; border-top: 1px solid var(--gray-300); }
   #venue-leaflet { height: 380px; }
 }
+
+/* ============================================================
+   SITEMAP PAGE
+   ============================================================ */
+.sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 3rem;
+}
+.sitemap-link {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  background: var(--gray-100, #1a1a1a);
+  border: 1px solid rgba(194, 159, 90, 0.18);
+  border-left: 3px solid var(--gold, #C29F5A);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.sitemap-link:hover {
+  background: #202020;
+  border-color: var(--gold, #C29F5A);
+  transform: translateY(-2px);
+}
+.sitemap-link__title {
+  display: block;
+  font-family: 'Black Ops One', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  color: var(--gold, #C29F5A);
+  margin-bottom: .4rem;
+}
+.sitemap-link__desc {
+  display: block;
+  font-size: .9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
