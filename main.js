@@ -97,11 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* -----------------------------------------------------------
-     COUNTDOWN TIMER (targeting April 25, 2026)
+     COUNTDOWN TIMER (targeting July 24, 2026)
      ----------------------------------------------------------- */
   const countdownEl = document.querySelector('.countdown');
   if (countdownEl) {
-    const targetDate = new Date('2026-04-25T08:00:00-05:00'); // CDT — Re-Do 2: The Re-Demptionator
+    const targetDate = new Date('2026-07-24T08:00:00-05:00'); // CDT — Summer Team Run N Gun
 
     const updateCountdown = () => {
       const now = new Date();

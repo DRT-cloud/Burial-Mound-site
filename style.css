@@ -1012,6 +1012,14 @@ h1, h2, h3, h4, h5, h6 {
 .reveal--delay-3 { transition-delay: 0.3s; }
 .reveal--delay-4 { transition-delay: 0.4s; }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* ============================================================
    PLACEHOLDER CONTENT (for shell pages)
    ============================================================ */
