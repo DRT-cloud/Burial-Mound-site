@@ -132,6 +132,44 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -----------------------------------------------------------
+     HERO PARALLAX (transform-based, GPU-accelerated)
+     Applies to .hero-mega__bg (home) and .hero__bg (sub-pages).
+     Disabled when prefers-reduced-motion is set.
+     ----------------------------------------------------------- */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const smallScreen = window.matchMedia('(max-width: 768px)').matches;
+  const heroBgs = document.querySelectorAll('.hero-mega__bg, .hero__bg');
+  if (!reduceMotion && !smallScreen && heroBgs.length > 0) {
+    // mark elements so CSS can scale them to hide translate edges
+    heroBgs.forEach(el => el.classList.add('is-parallax'));
+
+    const FACTOR = 0.35; // image moves slower than scroll
+    let ticking = false;
+
+    const applyParallax = () => {
+      const y = window.scrollY;
+      heroBgs.forEach(el => {
+        const hero = el.parentElement;
+        // only animate while the hero is still in view
+        if (hero && hero.getBoundingClientRect().bottom > 0) {
+          el.style.transform = 'translate3d(0,' + (y * FACTOR) + 'px,0)';
+        }
+      });
+      ticking = false;
+    };
+
+    const onScrollParallax = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(applyParallax);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScrollParallax, { passive: true });
+    applyParallax(); // set initial position
+  }
+
+  /* -----------------------------------------------------------
      SMOOTH SCROLL FOR ANCHOR LINKS
      ----------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -154,24 +192,66 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // RUN N GUN SUB-TABS
 // ============================================
+function activateTab(target, scrollIntoView) {
+  const tab = document.querySelector('.subnav__tab[data-tab="' + target + '"]');
+  if (!tab) return;
+  document.querySelectorAll('.subnav__tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  tab.classList.add('active');
+  const el = document.getElementById('tab-' + target);
+  if (el) {
+    el.classList.add('active');
+    el.querySelectorAll('.reveal').forEach(r => { observeReveal(r); });
+  }
+  if (scrollIntoView) {
+    const subnav = document.querySelector('.subnav');
+    if (subnav) subnav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 document.querySelectorAll('.subnav__tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = tab.dataset.tab;
-    // Deactivate all tabs + content
-    document.querySelectorAll('.subnav__tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    // Activate clicked tab + content
-    tab.classList.add('active');
-    const el = document.getElementById('tab-' + target);
-    if (el) {
-      el.classList.add('active');
-      // Re-trigger scroll reveals for newly visible content
-      el.querySelectorAll('.reveal').forEach(r => {
-        observeReveal(r);
-      });
-    }
-  });
+  tab.addEventListener('click', () => activateTab(tab.dataset.tab, false));
 });
+
+// Deep-link support: rng.html#results opens the matching sub-tab on load
+if (document.querySelector('.subnav__tab')) {
+  const hash = (location.hash || '').replace('#', '');
+  if (hash) activateTab(hash, true);
+}
+
+// ============================================
+// RUN N GUN RESULTS — EVENT-TYPE FILTER
+// ============================================
+(function () {
+  const select = document.getElementById('rng-event-filter');
+  if (!select) return;
+  const countEl = document.getElementById('rng-results-count');
+  const items = Array.from(document.querySelectorAll('.results-item[data-type]'));
+  const years = Array.from(document.querySelectorAll('.results-grid .results-year'));
+
+  function apply() {
+    const val = select.value;
+    let shown = 0;
+    items.forEach(item => {
+      const match = (val === 'all' || item.dataset.type === val);
+      item.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    // Hide year headings + their list when no visible items in that group
+    years.forEach(yr => {
+      const list = yr.nextElementSibling; // .results-list
+      if (!list) return;
+      const anyVisible = Array.from(list.querySelectorAll('.results-item[data-type]'))
+        .some(i => i.style.display !== 'none');
+      yr.style.display = anyVisible ? '' : 'none';
+      list.style.display = anyVisible ? '' : 'none';
+    });
+    if (countEl) countEl.textContent = shown + (shown === 1 ? ' result' : ' results');
+  }
+
+  select.addEventListener('change', apply);
+  apply();
+})();
 
 // Helper to re-observe reveals
 function observeReveal(el) {
