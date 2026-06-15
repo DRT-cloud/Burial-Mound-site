@@ -3360,3 +3360,95 @@ a.contact-detail__value:hover {
   grid-column: 3;
   justify-self: end;
 }
+
+
+/* ===========================================================
+   FOLLOW STRIP (index.html — after newsletter)
+   =========================================================== */
+.follow-strip {
+  padding: clamp(60px, 8vw, 100px) 0;
+  background: #000;
+  border-top: 1px solid rgba(194, 159, 90, 0.15);
+  text-align: center;
+}
+.follow-strip__title {
+  font-family: 'Black Ops One', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 40px;
+}
+.follow-strip__tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 240px));
+  gap: 20px;
+  justify-content: center;
+}
+.follow-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: #1a1a1a;
+  border: 1px solid rgba(194, 159, 90, 0.2);
+  text-decoration: none;
+  transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+.follow-tile:hover {
+  border-color: #C29F5A;
+  background: #1f1a14;
+  transform: translateY(-2px);
+}
+.follow-tile__icon {
+  width: 32px;
+  height: 32px;
+  fill: #C29F5A;
+  margin-bottom: 14px;
+  transition: fill 0.3s ease;
+}
+.follow-tile:hover .follow-tile__icon { fill: #D4B97A; }
+.follow-tile__platform {
+  font-family: 'Black Ops One', sans-serif;
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: 0.08em;
+}
+@media (max-width: 600px) {
+  .follow-strip__tiles {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+/* ===========================================================
+   CONTACT-PAGE SOCIAL TILES (contact.html only)
+   =========================================================== */
+.contact-social-tile {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #1a1a1a;
+  border: 1px solid rgba(194, 159, 90, 0.2);
+  text-decoration: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  margin-right: 8px;
+}
+.contact-social-tile:hover {
+  border-color: #C29F5A;
+  background: #1f1a14;
+}
+.contact-social-tile svg {
+  width: 18px;
+  height: 18px;
+  fill: #C29F5A;
+}
+.contact-social-tile__label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
