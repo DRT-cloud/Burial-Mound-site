@@ -3479,7 +3479,7 @@ a.contact-detail__value:hover {
   .hero__bg--about        { background-position: 25% 35% !important; } /* shooter left */
   .hero__bg--contact      { background-position: 65% 40% !important; } /* runner right */
   .hero__bg--media        { background-position: 58% 35% !important; } /* rifle right */
-  .hero__bg--rng          { background-position: 50% 40% !important; }
+  .hero__bg--rng          { background-position: 15% 30% !important; } /* shooter face far-left, slung rifle visible */
   .hero__bg--events       { background-position: 35% 35% !important; } /* shooter left */
   .hero__bg--training     { background-position: 35% 40% !important; }
   .hero__bg--directions   { background-position: 50% 50% !important; } /* aerial — center */
