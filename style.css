@@ -3452,3 +3452,40 @@ a.contact-detail__value:hover {
   color: #fff;
   letter-spacing: 0.02em;
 }
+
+/* ============================================================
+   MOBILE HERO FOCAL-POINT OVERRIDES (Phase 1)
+   Per-page background-position keyed to subject location.
+   Desktop framing unchanged — all rules scoped to ≤768px.
+   100svh prevents iOS Safari URL-bar collapse hero-jump.
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero { height: 100svh; min-height: 520px; }
+  .hero--sub { height: 60svh; min-height: 360px; }
+
+  /* Stronger bottom scrim so the title stays legible against
+     whatever subject we're now showing through the crop. */
+  .hero__bg::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.45) 0%,
+      rgba(0,0,0,0.30) 40%,
+      rgba(0,0,0,0.75) 100%
+    );
+  }
+
+  /* Per-page focal points. X% = horizontal anchor of the subject;
+     Y kept at 30–40% so the title overlays sky/blur, not the face. */
+  .hero__bg--about        { background-position: 25% 35% !important; } /* shooter left */
+  .hero__bg--contact      { background-position: 65% 40% !important; } /* runner right */
+  .hero__bg--media        { background-position: 58% 35% !important; } /* rifle right */
+  .hero__bg--rng          { background-position: 50% 40% !important; }
+  .hero__bg--events       { background-position: 35% 35% !important; } /* shooter left */
+  .hero__bg--training     { background-position: 35% 40% !important; }
+  .hero__bg--directions   { background-position: 50% 50% !important; } /* aerial — center */
+  .hero__bg--sitemap      { background-position: 50% 50% !important; }
+  .hero__bg--nearby       { background-position: 30% 50% !important; } /* building left */
+  .hero__bg--partners     { background-position: 50% 45% !important; }
+  .hero__bg--faq          { background-position: 50% 40% !important; }
+  /* index uses hero-sunset.jpg which is already portrait — leave default */
+}
