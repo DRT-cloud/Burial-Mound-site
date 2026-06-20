@@ -2721,9 +2721,9 @@ a.contact-detail__value:hover {
   font-family: 'Black Ops One', cursive;
   font-size: 9px;
   letter-spacing: 0.5px;
-  color: #c29f5a;
-  background: rgba(194,159,90,0.12);
-  border: 1px solid rgba(194,159,90,0.35);
+  color: #e05a4a;
+  background: rgba(224,90,74,0.12);
+  border: 1px solid rgba(224,90,74,0.40);
   border-radius: 3px;
   padding: 2px 5px;
   margin-top: 2px;
@@ -2733,9 +2733,9 @@ a.contact-detail__value:hover {
   font-family: 'Black Ops One', cursive;
   font-size: 9px;
   letter-spacing: 0.5px;
-  color: rgba(255,255,255,0.45);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
+  color: #c29f5a;
+  background: rgba(194,159,90,0.12);
+  border: 1px solid rgba(194,159,90,0.35);
   border-radius: 3px;
   padding: 2px 5px;
   margin-top: 2px;
@@ -3804,20 +3804,31 @@ a.contact-detail__value:hover {
 #print-sheet { display: none; }
 
 @media print {
-  /* Portrait, tight margins */
+  /* Force portrait regardless of the orientation the user selects.
+     `size: portrait` is a hint many mobile browsers ignore on manual
+     landscape, so the sheet width below also hard-locks the layout. */
   @page { size: portrait; margin: 12mm; }
 
-  /* ---- Hide all page chrome using display:none (NOT visibility:hidden,
-     which leaves layout + black backgrounds and produces blank pages) ---- */
+  /* ---- The rng page is the ONLY page with #print-sheet. These rules are
+     keyed on its PRESENCE (:has) instead of the body.printing-gear class so
+     the checklist prints correctly no matter how print is triggered (button,
+     browser menu, mobile share sheet) or what orientation is selected.
+     This is why mobile/landscape previously dumped 13 website pages: the
+     printing-gear class wasn't present, so these rules never applied. ---- */
+  /* body.printing-gear duplicates each :has() rule as a fallback for older
+     browsers that don't support :has() but DO get the class from the button. */
+  body:has(#print-sheet),
   body.printing-gear {
     background: #fff !important;
     color: #111 !important;
   }
 
   /* Hide every direct child of body... */
+  body:has(#print-sheet) > *,
   body.printing-gear > * { display: none !important; }
 
   /* ...but keep the section that CONTAINS the print sheet in the flow... */
+  body:has(#print-sheet) > #tab-first-time,
   body.printing-gear > #tab-first-time {
     display: block !important;
     background: #fff !important;
@@ -3826,17 +3837,23 @@ a.contact-detail__value:hover {
   }
 
   /* ...and inside that section, hide all its children except #print-sheet */
+  body:has(#print-sheet) > #tab-first-time > *,
   body.printing-gear > #tab-first-time > * { display: none !important; }
+  body:has(#print-sheet) > #tab-first-time > #print-sheet,
   body.printing-gear > #tab-first-time > #print-sheet { display: block !important; }
 
-  body.printing-gear #print-sheet {
+  #print-sheet {
     display: block !important;
-    width: 100%;
+    /* Hard portrait width-lock: prevents a landscape selection from
+       reflowing the sheet wider. Sheet never exceeds a portrait content box. */
+    width: 100% !important;
+    max-width: 186mm !important;  /* Letter portrait (216mm) minus 2x12mm + buffer */
+    margin: 0 auto !important;
     background: #fff !important;
     color: #111 !important;
     font-family: 'Poppins', Arial, sans-serif;
   }
-  body.printing-gear #print-sheet * {
+  #print-sheet * {
     background: transparent !important;
   }
 
