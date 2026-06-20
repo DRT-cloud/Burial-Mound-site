@@ -2316,8 +2316,15 @@ a.contact-detail__value:hover {
   background: #0a0a0a;
   border-bottom: 1px solid rgba(194, 159, 90, 0.35);
   padding: 12px 0;
+  /* Pin under the fixed main nav (80px tall) and keep visible while scrolling */
+  position: sticky;
+  top: 80px;
+  z-index: 50;
 }
 .subnav--top .subnav__tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
   padding-bottom: 2px;
 }
@@ -2872,7 +2879,8 @@ a.contact-detail__value:hover {
   .sponsor-grid { grid-template-columns: repeat(2, 1fr); }
   .subnav__tab { padding: 14px 16px; font-size: 12px; }
   .subnav--top { padding: 10px 0; }
-  .subnav--top .subnav__tabs { gap: 8px; }
+  /* On small screens keep a single scrollable row instead of wrapping/centering */
+  .subnav--top .subnav__tabs { gap: 8px; flex-wrap: nowrap; justify-content: flex-start; }
   .subnav--top .subnav__tab { padding: 10px 16px; font-size: 12px; }
 }
 
@@ -3752,12 +3760,14 @@ a.contact-detail__value:hover {
 
 /* ============================================
    RNG PAGE — SUBNAV ABOVE HERO (rng.html only)
-   Non-sticky variant placed under the fixed main nav.
+   Sticky variant placed under the fixed main nav so it stays
+   visible at the top of the viewport while scrolling.
    ============================================ */
 .subnav--top {
-  position: static;
-  top: auto;
+  position: sticky;
+  top: var(--nav-height);
   margin-top: var(--nav-height);
+  z-index: 50;
 }
 
 /* Directions tab is an <a> link — match button tab styling */
