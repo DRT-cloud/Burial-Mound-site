@@ -2307,6 +2307,49 @@ a.contact-detail__value:hover {
   color: #c29f5a;
   border-bottom-color: #c29f5a;
 }
+
+/* ============================================
+   PROMINENT PILL TABS — rng.html ONLY (.subnav--top)
+   Scoped so the rest of the site keeps the default underline tabs.
+   ============================================ */
+.subnav--top {
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(194, 159, 90, 0.35);
+  padding: 12px 0;
+}
+.subnav--top .subnav__tabs {
+  gap: 10px;
+  padding-bottom: 2px;
+}
+.subnav--top .subnav__tab {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 12px 22px;
+  border: 1px solid rgba(194, 159, 90, 0.4);
+  border-bottom: 1px solid rgba(194, 159, 90, 0.4);
+  border-radius: 6px;
+  background: rgba(194, 159, 90, 0.06);
+  text-decoration: none;
+  transition: color 0.25s, background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.subnav--top .subnav__tab:hover {
+  color: #fff;
+  background: rgba(194, 159, 90, 0.18);
+  border-color: #c29f5a;
+}
+.subnav--top .subnav__tab.active {
+  color: #000;
+  background: #c29f5a;
+  border-color: #c29f5a;
+  box-shadow: 0 2px 10px rgba(194, 159, 90, 0.35);
+}
+.subnav--top .subnav__tab.active:hover {
+  color: #000;
+  background: #d4b97a;
+  border-color: #d4b97a;
+}
+
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
@@ -2828,6 +2871,9 @@ a.contact-detail__value:hover {
   .rules-grid { grid-template-columns: 1fr; }
   .sponsor-grid { grid-template-columns: repeat(2, 1fr); }
   .subnav__tab { padding: 14px 16px; font-size: 12px; }
+  .subnav--top { padding: 10px 0; }
+  .subnav--top .subnav__tabs { gap: 8px; }
+  .subnav--top .subnav__tab { padding: 10px 16px; font-size: 12px; }
 }
 
 /* 2-column card grid for 4 events */
