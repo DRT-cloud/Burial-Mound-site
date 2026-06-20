@@ -3796,113 +3796,141 @@ a.contact-detail__value:hover {
 }
 
 /* ============================================
-   PRINT — GEAR CHECKLIST + SEASONAL ONLY
-   Triggered by body.printing-gear via printGearChecklist()
+   PRINT — DEDICATED CHECKLIST SHEET (#print-sheet)
+   Triggered by body.printing-gear via printGearChecklist().
+   Page 1 = gear checklist with checkboxes; Page 2 = seasonal reference.
+   Portrait-locked. #print-sheet is hidden on screen at all times.
    ============================================ */
+#print-sheet { display: none; }
+
 @media print {
-  /* Hide all top-level page chrome so no height remains (avoids blank pages).
-     #printable-gear lives inside #tab-first-time, so we keep that section
-     visible but collapse everything else inside it. */
-  body.printing-gear > .nav,
-  body.printing-gear > .hero,
-  body.printing-gear > .subnav,
-  body.printing-gear > .cta-banner,
-  body.printing-gear > .footer,
-  body.printing-gear > section:not(#tab-first-time) { display: none !important; }
+  /* Portrait, tight margins */
+  @page { size: portrait; margin: 12mm; }
 
-  /* Within the First Time tab, show only the printable region */
-  body.printing-gear #tab-first-time > *:not(#printable-gear) { display: none !important; }
-  body.printing-gear #tab-first-time,
-  body.printing-gear #tab-first-time #printable-gear { display: block !important; }
-
-  /* Hide the print button itself in the output */
-  body.printing-gear .checklist-print-bar { display: none !important; }
-
-  /* Force scroll-reveal elements visible — they default to opacity:0/transform
-     and would otherwise render blank in print since the IntersectionObserver
-     never fires for the print media context. */
-  body.printing-gear #printable-gear .reveal,
-  body.printing-gear #printable-gear .reveal * {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-  }
-
-  /* Force ink-friendly light theme for the printed sections */
-  body.printing-gear,
-  body.printing-gear #printable-gear,
-  body.printing-gear #printable-gear .section {
+  /* ---- Hide all page chrome using display:none (NOT visibility:hidden,
+     which leaves layout + black backgrounds and produces blank pages) ---- */
+  body.printing-gear {
     background: #fff !important;
+    color: #111 !important;
   }
 
-  /* PAGE 1 = Gear Checklist (first .section), PAGE 2 = Seasonal (second .section) */
-  body.printing-gear #printable-gear .section {
-    padding: 0 0 8px !important;
+  /* Hide every direct child of body... */
+  body.printing-gear > * { display: none !important; }
+
+  /* ...but keep the section that CONTAINS the print sheet in the flow... */
+  body.printing-gear > #tab-first-time {
+    display: block !important;
+    background: #fff !important;
+    padding: 0 !important;
     margin: 0 !important;
   }
-  body.printing-gear #printable-gear .section:first-child {
-    page-break-after: always;
-    break-after: page;
-  }
-  body.printing-gear #printable-gear .section:last-child {
-    page-break-before: avoid;
-    break-before: avoid;
-  }
 
-  body.printing-gear #printable-gear .section__heading {
-    color: #000 !important;
-    font-size: 22px !important;
-    margin: 0 0 6px !important;
-  }
-  body.printing-gear #printable-gear .divider { margin: 0 auto 8px !important; }
-  body.printing-gear #printable-gear .section__intro {
-    color: #333 !important;
-    font-size: 11px !important;
-    margin: 0 0 12px !important;
-  }
-  body.printing-gear #printable-gear .checklist-category__title,
-  body.printing-gear #printable-gear .seasonal-card__title { color: #000 !important; }
+  /* ...and inside that section, hide all its children except #print-sheet */
+  body.printing-gear > #tab-first-time > * { display: none !important; }
+  body.printing-gear > #tab-first-time > #print-sheet { display: block !important; }
 
-  /* Three columns, compact, so all 6 checklist categories fit page 1 */
-  body.printing-gear #printable-gear .checklist-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 10px !important;
-    margin-top: 10px !important;
-  }
-  /* Three seasonal cards across page 2 */
-  body.printing-gear #printable-gear .seasonal-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 10px !important;
-    margin-top: 10px !important;
-  }
-
-  body.printing-gear #printable-gear .checklist-category,
-  body.printing-gear #printable-gear .seasonal-card {
+  body.printing-gear #print-sheet {
+    display: block !important;
+    width: 100%;
     background: #fff !important;
-    border: 1px solid #999 !important;
-    padding: 12px 12px !important;
-    break-inside: avoid;
-    page-break-inside: avoid;
+    color: #111 !important;
+    font-family: 'Poppins', Arial, sans-serif;
   }
-  body.printing-gear #printable-gear .checklist-category__title,
-  body.printing-gear #printable-gear .seasonal-card__title {
-    font-size: 12px !important;
-    margin-bottom: 8px !important;
+  body.printing-gear #print-sheet * {
+    background: transparent !important;
   }
-  body.printing-gear #printable-gear .checklist-list li,
-  body.printing-gear #printable-gear .seasonal-list li {
-    color: #222 !important;
-    font-size: 10px !important;
-    line-height: 1.4 !important;
-    padding: 4px 0 !important;
-  }
-  body.printing-gear #printable-gear .seasonal-list li { padding-left: 12px !important; }
-  body.printing-gear #printable-gear .checklist-req,
-  body.printing-gear #printable-gear .checklist-rec {
+
+  /* Each .ps-page is exactly one printed page */
+  .ps-page { page-break-after: always; break-after: page; }
+  .ps-page:last-child { page-break-after: auto; break-after: auto; }
+
+  /* Header block */
+  .ps-head { text-align: center; margin: 0 0 12px; }
+  .ps-title {
+    font-family: 'Black Ops One', cursive;
+    font-size: 24px;
+    letter-spacing: 2px;
     color: #000 !important;
-    background: #eee !important;
-    border-color: #999 !important;
-    font-size: 8px !important;
+    margin: 0 0 4px;
+    border-bottom: 3px solid #c29f5a;
+    display: inline-block;
+    padding-bottom: 4px;
   }
-  @page { margin: 10mm; }
+  .ps-sub { font-size: 10.5px; color: #444 !important; margin: 6px 0 4px; }
+  .ps-legend { font-size: 9px; color: #333 !important; margin: 2px 0 0; }
+
+  /* Two-column grid keeps checkboxes large and readable on a portrait page */
+  .ps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 22px;
+    margin-top: 8px;
+  }
+  .ps-grid--seasonal { grid-template-columns: 1fr; gap: 6px; }
+
+  .ps-cat { break-inside: avoid; page-break-inside: avoid; margin-bottom: 4px; }
+  .ps-cat__title {
+    font-family: 'Black Ops One', cursive;
+    font-size: 12px;
+    color: #000 !important;
+    margin: 6px 0 4px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #c29f5a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .ps-list { list-style: none; margin: 0; padding: 0; }
+  .ps-list li {
+    font-size: 10px;
+    line-height: 1.35;
+    color: #1a1a1a !important;
+    padding: 3px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    break-inside: avoid;
+  }
+
+  /* The checkbox */
+  .ps-box {
+    flex: 0 0 auto;
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid #333;
+    border-radius: 2px;
+    margin-top: 1px;
+    display: inline-block;
+  }
+
+  /* REQ / REC tags */
+  .ps-tag {
+    flex: 0 0 auto;
+    font-size: 7.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 1px 4px;
+    border-radius: 3px;
+    border: 1px solid #999;
+    margin-top: 1px;
+    line-height: 1.2;
+  }
+  /* Outline-only tag coloring (print PDF only): red REQ, gold REC.
+     Background stays white; color applied to border + text only. */
+  .ps-tag--req {
+    background: #fff !important;
+    color: #c0392b !important;
+    border: 1.5px solid #c0392b !important;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .ps-tag--rec {
+    background: #fff !important;
+    color: #b8902f !important;
+    border: 1.5px solid #c29f5a !important;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  /* Seasonal page = reference bullets (no checkboxes) */
+  .ps-cat--season { margin-bottom: 10px; }
+  .ps-list--bullets li { display: list-item; list-style: disc; margin-left: 16px; padding: 2px 0; gap: 0; }
 }
