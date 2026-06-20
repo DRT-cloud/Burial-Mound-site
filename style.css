@@ -2599,6 +2599,219 @@ a.contact-detail__value:hover {
   text-align: center;
 }
 
+
+/* ============================================
+   FIRST TIMER — GEAR CHECKLIST
+   ============================================ */
+.ft-body {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.ft-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+.ft-list li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  padding: 6px 0 6px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+.ft-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #c29f5a;
+  font-size: 12px;
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.checklist-category {
+  background: #111;
+  border: 1px solid rgba(194,159,90,0.15);
+  border-radius: 8px;
+  padding: 28px 24px;
+}
+.checklist-category__title {
+  font-family: 'Black Ops One', cursive;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c29f5a;
+  margin-bottom: 18px;
+}
+.checklist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.checklist-list li {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.checklist-list li:last-child { border-bottom: none; }
+.checklist-req {
+  flex-shrink: 0;
+  font-family: 'Black Ops One', cursive;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: #c29f5a;
+  background: rgba(194,159,90,0.12);
+  border: 1px solid rgba(194,159,90,0.35);
+  border-radius: 3px;
+  padding: 2px 5px;
+  margin-top: 2px;
+}
+.checklist-rec {
+  flex-shrink: 0;
+  font-family: 'Black Ops One', cursive;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 3px;
+  padding: 2px 5px;
+  margin-top: 2px;
+}
+
+/* ============================================
+   FIRST TIMER — SEASONAL CARDS
+   ============================================ */
+.seasonal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.seasonal-card {
+  background: #111;
+  border-radius: 8px;
+  padding: 32px 24px;
+  border-top: 3px solid rgba(194,159,90,0.3);
+}
+.seasonal-card--summer { border-top-color: #c29f5a; }
+.seasonal-card--spring { border-top-color: rgba(194,159,90,0.5); }
+.seasonal-card--winter { border-top-color: rgba(194,159,90,0.25); }
+.seasonal-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.seasonal-card__icon {
+  font-size: 22px;
+  line-height: 1;
+}
+.seasonal-card__title {
+  font-family: 'Black Ops One', cursive;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.seasonal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.seasonal-list li {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  padding: 7px 0 7px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+.seasonal-list li:last-child { border-bottom: none; }
+.seasonal-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c29f5a;
+  opacity: 0.6;
+}
+
+/* ============================================
+   FIRST TIMER — TIPS FROM THE FIELD
+   ============================================ */
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 40px;
+}
+.tip-item {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.tip-item:last-child { border-bottom: none; }
+.tip-item__label {
+  font-family: 'Black Ops One', cursive;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c29f5a;
+  padding-top: 2px;
+}
+.tip-item p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE — FIRST TIMER NEW COMPONENTS
+   ============================================ */
+@media (max-width: 1024px) {
+  .checklist-grid { grid-template-columns: repeat(2, 1fr); }
+  .seasonal-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .checklist-grid { grid-template-columns: 1fr; }
+  .seasonal-grid { grid-template-columns: 1fr; }
+  .tip-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+
+/* ============================================
+   FIRST TIMER — CTA BUTTON ROW
+   ============================================ */
+.ft-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
 /* ============================================
    RESPONSIVE: New components
    ============================================ */
@@ -3488,4 +3701,97 @@ a.contact-detail__value:hover {
   .hero__bg--partners     { background-position: 50% 45% !important; }
   .hero__bg--faq          { background-position: 50% 40% !important; }
   /* index uses hero-sunset.jpg which is already portrait — leave default */
+}
+
+
+/* ============================================
+   RNG PAGE — SUBNAV ABOVE HERO (rng.html only)
+   Non-sticky variant placed under the fixed main nav.
+   ============================================ */
+.subnav--top {
+  position: static;
+  top: auto;
+  margin-top: var(--nav-height);
+}
+
+/* Directions tab is an <a> link — match button tab styling */
+.subnav__tab--link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* ============================================
+   FIRST TIMER — PRINT CHECKLIST BUTTON
+   ============================================ */
+.checklist-print-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+.print-checklist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.print-checklist-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ============================================
+   PRINT — GEAR CHECKLIST + SEASONAL ONLY
+   Triggered by body.printing-gear via printGearChecklist()
+   ============================================ */
+@media print {
+  body.printing-gear * {
+    visibility: hidden;
+  }
+  body.printing-gear #printable-gear,
+  body.printing-gear #printable-gear * {
+    visibility: visible;
+  }
+  body.printing-gear #printable-gear {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  /* Hide the print button itself in the output */
+  body.printing-gear .checklist-print-bar {
+    display: none;
+  }
+  /* Force ink-friendly light theme for the printed sections */
+  body.printing-gear,
+  body.printing-gear #printable-gear,
+  body.printing-gear #printable-gear .section {
+    background: #fff !important;
+  }
+  body.printing-gear #printable-gear .section { padding: 16px 0 !important; }
+  body.printing-gear #printable-gear .section__heading,
+  body.printing-gear #printable-gear .checklist-category__title,
+  body.printing-gear #printable-gear .seasonal-card__title { color: #000 !important; }
+  body.printing-gear #printable-gear .checklist-category,
+  body.printing-gear #printable-gear .seasonal-card {
+    background: #fff !important;
+    border: 1px solid #999 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  body.printing-gear #printable-gear .checklist-list li,
+  body.printing-gear #printable-gear .seasonal-list li,
+  body.printing-gear #printable-gear .section__intro { color: #222 !important; }
+  body.printing-gear #printable-gear .checklist-req,
+  body.printing-gear #printable-gear .checklist-rec {
+    color: #000 !important;
+    background: #eee !important;
+    border-color: #999 !important;
+  }
+  /* Two-column grids print cleaner than three on paper */
+  body.printing-gear #printable-gear .checklist-grid,
+  body.printing-gear #printable-gear .seasonal-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  @page { margin: 14mm; }
 }
