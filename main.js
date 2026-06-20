@@ -192,7 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // RUN N GUN SUB-TABS
 // ============================================
+// Allow-list of valid sub-tab targets (guards against malformed location.hash)
+const RNG_TABS = ['what-is', 'first-time', 'rules', 'results'];
+
 function activateTab(target, scrollIntoView) {
+  if (RNG_TABS.indexOf(target) === -1) return;
   const tab = document.querySelector('.subnav__tab[data-tab="' + target + '"]');
   if (!tab) return;
   document.querySelectorAll('.subnav__tab').forEach(t => t.classList.remove('active'));
@@ -204,8 +208,13 @@ function activateTab(target, scrollIntoView) {
     el.querySelectorAll('.reveal').forEach(r => { observeReveal(r); });
   }
   if (scrollIntoView) {
-    const subnav = document.querySelector('.subnav');
-    if (subnav) subnav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Scroll to the activated content (fall back to the subnav)
+    const anchor = el || document.querySelector('.subnav');
+    if (anchor) {
+      const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 80;
+      const top = anchor.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
   }
 }
 
@@ -213,10 +222,15 @@ document.querySelectorAll('.subnav__tab').forEach(tab => {
   tab.addEventListener('click', () => activateTab(tab.dataset.tab, false));
 });
 
-// Deep-link support: rng.html#results opens the matching sub-tab on load
+// Deep-link support: rng.html#results opens the matching sub-tab on load.
+// Run after a frame so layout is ready and the scroll lands correctly.
 if (document.querySelector('.subnav__tab')) {
   const hash = (location.hash || '').replace('#', '');
-  if (hash) activateTab(hash, true);
+  if (hash) {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => activateTab(hash, true));
+    });
+  }
 }
 
 // ============================================
@@ -258,7 +272,7 @@ function observeReveal(el) {
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
+        entry.target.classList.add('visible');
         obs.unobserve(entry.target);
       }
     });
