@@ -906,7 +906,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 48px;
 }
 
-.footer__nav-column h4 {
+.footer__nav-column h3 {
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
@@ -953,7 +953,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: right;
 }
 
-.footer__contact h4 {
+.footer__contact h3 {
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;

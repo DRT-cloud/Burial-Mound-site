@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Burial Mound Event Center — Premier Competition &amp; Event Center</title>
-  <meta name="description" content="The Burial Mound Event Center in Pawnee, Oklahoma. 270+ acres of world-class competition terrain. Run N Gun events, Twilight Biathlon, tactical training, and corporate team building. Home of the original nighttime centerfire biathlon.">
+  <meta name="description" content="The Burial Mound Event Center, Pawnee, Oklahoma. 270+ acres of competition terrain for Run N Gun events, the Twilight Biathlon, and tactical training.">
   <meta property="og:title" content="The Burial Mound Event Center">
   <meta property="og:description" content="Premier Competition & Event Center — Pawnee, Oklahoma. 270+ acres of world-class competition terrain.">
   <meta property="og:image" content="https://theburialmound.com/images/hero-sunset.jpg">
@@ -15,7 +15,39 @@
   <meta name="twitter:title" content="The Burial Mound Event Center">
   <meta name="twitter:description" content="Premier Competition & Event Center — Pawnee, Oklahoma. 270+ acres of world-class competition terrain.">
   <meta name="twitter:image" content="https://theburialmound.com/images/hero-sunset.jpg">
+  <link rel="canonical" href="https://theburialmound.com/">
+  <link rel="preload" as="image" href="images/hero-sunset.jpg" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "The Burial Mound Event Center",
+  "description": "270+ acre competition and event facility in Pawnee, Oklahoma, hosting Run N Gun competitions, the Twilight Biathlon, and tactical training.",
+  "url": "https://theburialmound.com/",
+  "logo": "https://theburialmound.com/images/logo.jpg",
+  "image": "https://theburialmound.com/images/hero-sunset.jpg",
+  "telephone": "+1-918-285-9781",
+  "email": "theburialmound@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "42251 South 34500 Road",
+    "addressLocality": "Pawnee",
+    "addressRegion": "OK",
+    "postalCode": "74058",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 36.40236,
+    "longitude": -96.854434
+  },
+  "sameAs": [
+    "https://www.facebook.com/theburialmound/",
+    "https://www.instagram.com/theburialmound2022/"
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -228,13 +260,13 @@
     <div class="container">
       <h2 class="email-signup__title reveal">STAY IN THE LOOP</h2>
       <p class="email-signup__text reveal">Get event announcements, registration openings, and updates from The Burial Mound delivered straight to your inbox.</p>
-      <form class="email-signup__form reveal" action="https://formspree.io/f/placeholder" method="POST">
+      <form class="email-signup__form reveal" onsubmit="return false;" aria-describedby="signup-soon">
         <div class="email-signup__input-group">
-          <input type="email" name="email" placeholder="Enter your email address" required class="email-signup__input" aria-label="Email address">
-          <button type="submit" class="btn-gold email-signup__btn">SUBSCRIBE</button>
+          <input type="email" name="email" placeholder="Signup coming soon" class="email-signup__input" aria-label="Email address" disabled>
+          <button type="button" class="btn-gold email-signup__btn" disabled aria-disabled="true">COMING SOON</button>
         </div>
       </form>
-      <p class="email-signup__disclaimer reveal">No spam. Unsubscribe anytime.</p>
+      <p id="signup-soon" class="email-signup__disclaimer reveal">Email signup is coming soon — for now, follow us below for event announcements.</p>
     </div>
   </section>
 
@@ -275,7 +307,7 @@
         <!-- Nav -->
         <div class="footer__nav">
           <div class="footer__nav-column">
-            <h4>Explore</h4>
+            <h3>Explore</h3>
             <a href="index.html">Home</a>
             <a href="events.html">Events</a>
             <a href="rng.html">Run N Gun</a>
@@ -285,7 +317,7 @@
             <a href="rng.html#results">Results</a>
           </div>
           <div class="footer__nav-column">
-            <h4>Visit</h4>
+            <h3>Visit</h3>
             <a href="facilities.html">Facilities</a>
             <a href="directions.html">Directions</a>
             <a href="nearby.html">Nearby</a>
@@ -297,7 +329,7 @@
 
         <!-- Contact -->
         <div class="footer__contact">
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <p><a href="tel:9182859781">918-285-9781</a></p>
           <p><a href="mailto:theburialmound@gmail.com">theburialmound@gmail.com</a></p>
           <p>Pawnee, Oklahoma 74058</p>
