@@ -3809,27 +3809,28 @@ a.contact-detail__value:hover {
      landscape, so the sheet width below also hard-locks the layout. */
   @page { size: portrait; margin: 12mm; }
 
-  /* ---- The rng page is the ONLY page with #print-sheet. These rules are
-     keyed on its PRESENCE (:has) instead of the body.printing-gear class so
-     the checklist prints correctly no matter how print is triggered (button,
-     browser menu, mobile share sheet) or what orientation is selected.
-     This is why mobile/landscape previously dumped 13 website pages: the
-     printing-gear class wasn't present, so these rules never applied. ---- */
-  /* body.printing-gear duplicates each :has() rule as a fallback for older
-     browsers that don't support :has() but DO get the class from the button. */
-  body:has(#print-sheet),
-  body.printing-gear {
+  /* ============================================================
+     TWO PRINT MODES on the rng page, set by the buttons:
+       - body.printing-gear  -> gear checklist (#print-sheet)
+       - body.printing-rules -> official rules (.rulebook-wrapper)
+     A default fallback (neither class present, e.g. browser-menu/mobile
+     print) prints the gear checklist, since that's the common case.
+     ============================================================ */
+
+  /* ---- GEAR CHECKLIST MODE ---- */
+  body.printing-gear,
+  body:has(#print-sheet):not(.printing-rules):not(.printing-gear) {
     background: #fff !important;
     color: #111 !important;
   }
 
   /* Hide every direct child of body... */
-  body:has(#print-sheet) > *,
-  body.printing-gear > * { display: none !important; }
+  body.printing-gear > *,
+  body:has(#print-sheet):not(.printing-rules):not(.printing-gear) > * { display: none !important; }
 
   /* ...but keep the section that CONTAINS the print sheet in the flow... */
-  body:has(#print-sheet) > #tab-first-time,
-  body.printing-gear > #tab-first-time {
+  body.printing-gear > #tab-first-time,
+  body:has(#print-sheet):not(.printing-rules):not(.printing-gear) > #tab-first-time {
     display: block !important;
     background: #fff !important;
     padding: 0 !important;
@@ -3837,10 +3838,10 @@ a.contact-detail__value:hover {
   }
 
   /* ...and inside that section, hide all its children except #print-sheet */
-  body:has(#print-sheet) > #tab-first-time > *,
-  body.printing-gear > #tab-first-time > * { display: none !important; }
-  body:has(#print-sheet) > #tab-first-time > #print-sheet,
-  body.printing-gear > #tab-first-time > #print-sheet { display: block !important; }
+  body.printing-gear > #tab-first-time > *,
+  body:has(#print-sheet):not(.printing-rules):not(.printing-gear) > #tab-first-time > * { display: none !important; }
+  body.printing-gear > #tab-first-time > #print-sheet,
+  body:has(#print-sheet):not(.printing-rules):not(.printing-gear) > #tab-first-time > #print-sheet { display: block !important; }
 
   #print-sheet {
     display: block !important;
@@ -3950,4 +3951,127 @@ a.contact-detail__value:hover {
   /* Seasonal page = reference bullets (no checkboxes) */
   .ps-cat--season { margin-bottom: 10px; }
   .ps-list--bullets li { display: list-item; list-style: disc; margin-left: 16px; padding: 2px 0; gap: 0; }
+
+  /* ============================================================
+     RULES MODE (body.printing-rules) — clean, print-friendly
+     reformat of the existing .rulebook-wrapper content. Hides all
+     page chrome, the sidebar TOC, and the print button; forces a
+     light theme so it prints legibly in black on white.
+     ============================================================ */
+  body.printing-rules {
+    background: #fff !important;
+    color: #1a1a1a !important;
+  }
+  body.printing-rules > * { display: none !important; }
+  body.printing-rules > #tab-rules {
+    display: block !important;
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Wrapper + layout reset to a single readable column */
+  body.printing-rules .rulebook-wrapper { background: #fff !important; padding: 0 !important; margin: 0 !important; }
+  body.printing-rules .layout { display: block !important; }
+  body.printing-rules .sidebar { display: none !important; }     /* drop TOC */
+  body.printing-rules .print-btn { display: none !important; }   /* drop button */
+  body.printing-rules .content {
+    display: block !important;
+    width: 100% !important;
+    max-width: 186mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+  body.printing-rules .rulebook-wrapper * { background: transparent !important; }
+
+  /* Banner header */
+  body.printing-rules .banner {
+    background: #fff !important;
+    text-align: center;
+    padding: 0 0 10px !important;
+    margin: 0 0 12px !important;
+    border-bottom: 3px solid #c29f5a;
+  }
+  body.printing-rules .banner-event { font-size: 10px; color: #555 !important; letter-spacing: 0.5px; }
+  body.printing-rules .banner-title {
+    font-family: 'Black Ops One', cursive;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: #000 !important;
+    margin: 4px 0;
+  }
+  body.printing-rules .banner-sub { font-size: 10px; color: #555 !important; }
+
+  /* Sections */
+  body.printing-rules .rule-section { page-break-inside: auto; margin: 0 0 14px !important; }
+  body.printing-rules .section-header {
+    border-bottom: 1px solid #c29f5a;
+    padding-bottom: 3px;
+    margin: 14px 0 8px !important;
+    page-break-after: avoid;
+  }
+  body.printing-rules .section-num { font-size: 9px; color: #b8902f !important; letter-spacing: 1px; text-transform: uppercase; display: block; }
+  body.printing-rules .section-title {
+    font-family: 'Black Ops One', cursive;
+    font-size: 15px;
+    color: #000 !important;
+    margin: 2px 0 0 !important;
+  }
+
+  body.printing-rules .sub { margin: 8px 0 !important; page-break-inside: avoid; }
+  body.printing-rules .sub-title { font-weight: 700; font-size: 11px; color: #1a1a1a !important; margin-bottom: 3px; }
+  body.printing-rules .sub-num { color: #b8902f !important; font-weight: 700; margin-right: 5px; }
+  body.printing-rules .rule-body { font-size: 10px; line-height: 1.4; color: #222 !important; margin: 3px 0 !important; }
+
+  body.printing-rules .rule-list,
+  body.printing-rules .rule-sublist,
+  body.printing-rules .plain-list { margin: 4px 0 !important; padding-left: 0 !important; list-style: none !important; }
+  body.printing-rules .rule-list > li,
+  body.printing-rules .rule-sublist > li {
+    font-size: 10px; line-height: 1.4; color: #222 !important;
+    padding: 2px 0; display: flex; gap: 6px; page-break-inside: avoid;
+  }
+  body.printing-rules .num { color: #b8902f !important; font-weight: 700; flex: 0 0 auto; }
+  body.printing-rules .plain-list li { font-size: 10px; line-height: 1.4; color: #222 !important; padding: 2px 0 2px 14px; position: relative; }
+  body.printing-rules .plain-list li::before { content: "\2022"; color: #c29f5a !important; position: absolute; left: 2px; }
+
+  /* Callouts */
+  body.printing-rules .callout {
+    border: 1px solid #c29f5a !important;
+    background: #faf6ec !important;
+    color: #1a1a1a !important;
+    padding: 6px 8px !important;
+    font-size: 10px;
+    margin: 6px 0 !important;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  body.printing-rules .callout strong { color: #000 !important; }
+  body.printing-rules .callout.warn { border-color: #c0392b !important; background: #fbeeec !important; }
+
+  /* Penalty table */
+  body.printing-rules .penalty-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 9.5px;
+    margin: 6px 0 !important;
+    page-break-inside: avoid;
+  }
+  body.printing-rules .penalty-table th,
+  body.printing-rules .penalty-table td {
+    border: 1px solid #ccc !important;
+    padding: 3px 5px !important;
+    color: #222 !important;
+    text-align: left;
+  }
+  body.printing-rules .penalty-table th {
+    background: #f2ead8 !important;
+    color: #000 !important;
+    font-weight: 700;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  body.printing-rules .penalty-time { color: #b8902f !important; font-weight: 600; }
+  body.printing-rules .penalty-dq { color: #c0392b !important; font-weight: 700; }
+  body.printing-rules .hl { color: #000 !important; font-weight: 700; }
 }

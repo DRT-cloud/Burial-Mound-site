@@ -217,7 +217,7 @@
 
           <div class="ft-card">
             <span class="ft-card__step">06</span>
-            <h3 class="ft-card__title">Scoring &amp; Finish</h3>
+            <h3 class="ft-card__title">Finish</h3>
             <p>Cross the finish line, clear your firearms. Awards follow when all competitors finish. Entry includes a meal — stick around for prizes and giveaways.</p>
           </div>
 
@@ -544,11 +544,11 @@
       <div class="banner-event">The Burial Mound Event Center &mdash; Run n Gun Rules</div>
       <h1 class="banner-title">OFFICIAL RULES</h1>
       <div class="banner-sub">Revised April 2026 &nbsp;&bull;&nbsp; theburialmound.com</div>
-      <button class="print-btn" onclick="window.print()">
+      <button class="print-btn" onclick="printRules()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
         </svg>
-        Print / Save as PDF
+        PRINT RULES
       </button>
     </div>
 
@@ -1243,9 +1243,20 @@
   <script src="main.js"></script>
   <script>
     function printGearChecklist() {
+      document.body.classList.remove('printing-rules');
       document.body.classList.add('printing-gear');
       window.onafterprint = function () {
         document.body.classList.remove('printing-gear');
+        window.onafterprint = null;
+      };
+      window.print();
+    }
+
+    function printRules() {
+      document.body.classList.remove('printing-gear');
+      document.body.classList.add('printing-rules');
+      window.onafterprint = function () {
+        document.body.classList.remove('printing-rules');
         window.onafterprint = null;
       };
       window.print();
