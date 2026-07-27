@@ -97,11 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* -----------------------------------------------------------
-     COUNTDOWN TIMER (targeting July 24, 2026)
+     COUNTDOWN TIMER (targeting October 16, 2026)
      ----------------------------------------------------------- */
   const countdownEl = document.querySelector('.countdown');
   if (countdownEl) {
-    const targetDate = new Date('2026-07-24T08:00:00-05:00'); // CDT — Summer Team Run N Gun
+    const targetDate = new Date('2026-10-16T16:00:00-05:00'); // CDT — Twilight Biathlon Fall, gates 4:00 PM
 
     const updateCountdown = () => {
       const now = new Date();
