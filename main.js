@@ -56,7 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      threshold: 0.12,
+      // Include 0 so elements TALLER than the viewport (e.g. the partners
+      // sponsor grid on phones) can still satisfy the observer. With only
+      // 0.12, a 7600px grid needs 912px visible on a 664px screen and never
+      // reveals — it stays at opacity 0 as blank black space.
+      threshold: [0, 0.12],
       rootMargin: '0px 0px -40px 0px'
     });
 
@@ -276,6 +280,6 @@ function observeReveal(el) {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: [0, 0.1] });
   obs.observe(el);
 }

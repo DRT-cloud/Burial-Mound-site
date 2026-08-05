@@ -4075,3 +4075,18 @@ a.contact-detail__value:hover {
   body.printing-rules .penalty-dq { color: #c0392b !important; font-weight: 700; }
   body.printing-rules .hl { color: #000 !important; font-weight: 700; }
 }
+
+/* ============================================
+   SPONSOR GRID — phone layout (Aug 5 2026)
+   Two columns below ~400px squeezed each card to ~180px, breaking the
+   descriptions to 1-2 words per line. Drop to a single column on phones.
+   ============================================ */
+@media (max-width: 560px) {
+  .sponsor-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .sponsor-card {
+    padding: 32px 24px;
+  }
+}
