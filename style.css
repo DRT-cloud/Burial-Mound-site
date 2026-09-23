@@ -2008,7 +2008,35 @@ a.contact-detail__value:hover {
   margin-top: 16px;
 }
 
+.email-signup__names {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.email-signup__names .email-signup__input {
+  border-right: 1px solid rgba(194, 159, 90, 0.3);
+  border-radius: 4px;
+}
+.email-signup__names .email-signup__input:focus { border-color: #c29f5a; }
+.email-signup__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.email-signup__status {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  min-height: 1.4em;
+  margin-top: 14px;
+  color: #d4b97a;
+}
+.email-signup__status.is-error { color: #e07a6a; }
+.email-signup__btn:disabled { opacity: 0.6; cursor: wait; }
+
 @media (max-width: 480px) {
+  .email-signup__names { flex-direction: column; }
   .email-signup__input-group {
     flex-direction: column;
     gap: 12px;
