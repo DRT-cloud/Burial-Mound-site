@@ -283,3 +283,39 @@ function observeReveal(el) {
   }, { threshold: [0, 0.1] });
   obs.observe(el);
 }
+
+/* Brevo email signup (index.html) — AJAX submit, single opt-in */
+(function () {
+  var form = document.getElementById('bm-signup');
+  if (!form) return;
+  var status = form.querySelector('.email-signup__status');
+  var btn = form.querySelector('button[type="submit"]');
+  function say(msg, err) {
+    status.textContent = msg;
+    status.classList.toggle('is-error', !!err);
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form.email_address_check.value) return; // honeypot
+    var f = form.FIRSTNAME.value.trim(), l = form.LASTNAME.value.trim(), m = form.EMAIL.value.trim();
+    if (!f || !l) return say('Enter your first and last name.', true);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)) return say('Enter a valid email address.', true);
+    btn.disabled = true;
+    say('Sending...');
+    fetch(form.action + (form.action.indexOf('?') > -1 ? '&' : '?') + 'isAjax=1', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+      .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
+      .then(function (d) {
+        if (d && d.success) {
+          form.reset();
+          say("You're on the list.");
+        } else {
+          say((d && d.errors && d.errors.message) || 'Signup failed. Try again.', true);
+        }
+      })
+      .catch(function () { say('Network error. Try again.', true); })
+      .then(function () { btn.disabled = false; });
+  });
+})();
